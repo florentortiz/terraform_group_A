@@ -38,3 +38,18 @@ variable "vm_name_pfx" {
   default     = "test-vm-groupe-a" #to update by Groupe#
   type        = string
 }
+
+
+variable "azure_container_name" {
+	type = string
+	description = "Azure container for GroupA"
+	sensitive = true
+	default = "tfstate-GROUPE-A"
+}
+
+variable "azure_storage_account" {
+	type = string
+	description = "Azure storage account dedicated to tfstate for GroupA"
+	sensitive = true
+	default = "SA-tfstate-GROUPE-A"
+}
