@@ -6,9 +6,9 @@ terraform {
     }
   }
   backend "azurerm" {
-    resource_group_name = "GROUPE-A-RG-TF"
-    storage_account_name = "SA-tfstate-GROUPE-A"
-    container_name = "tfstate-GROUPE-A"
+    resource_group_name = "tfstate-RG-GRPA"
+    storage_account_name = "satfstategrpa"
+    container_name = "tfstategrpa"
     key = "infra.tfstate"
   }
 }
