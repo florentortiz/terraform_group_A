@@ -1,6 +1,6 @@
 # create an azure NIC
 
-resource "azurerm_network_interface" "test-vm-groupe-a-nic" {
+resource "azurerm_network_interface" "test-vm-groupe-a" {
   name                = "${var.vm_name_pfx}-nic"
   location            = var.azure_resource_group_location
   resource_group_name = var.azure_resource_group_name
@@ -26,7 +26,7 @@ resource "azurerm_linux_virtual_machine" "test-vm-groupe-a" {
 
 
  network_interface_ids = [
-    azurerm_network_interface.test-vm-groupe-a.id,
+    azurerm_network_interface.test-vm-groupe-a-nic.id,
   ]
  
 
