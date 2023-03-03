@@ -26,7 +26,7 @@ resource "azurerm_linux_virtual_machine" "test-vm-groupe-a" {
 
 
  network_interface_ids = [
-    azurerm_network_interface.test-vm-groupe-a.id,
+    azurerm_network_interface.test-vm-groupe-a-nic.id,
   ]
  
 
