@@ -2,7 +2,7 @@ variable "azure_resource_group_name" {
 	type = string
 	description = "Azure resource group name for GroupA"
 	sensitive = true
-	default = "GROUPE-A-VNET-TF"
+	default = "GROUPE-A-RG-TF"
 }
 
 variable "azure_resource_group_location" {
