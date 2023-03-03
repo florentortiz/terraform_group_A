@@ -26,6 +26,12 @@ variable "azure_vnet_range" {
 	default = "10.0.0.0/16"
 }
 
+variable "azure_subnet_name" {
+	type = string
+	description = "Azure Subnet name for GroupA"
+	sensitive = true
+	default = "internal"
+}
 
 variable "vm_name_pfx" {
   description = "VM Names"
