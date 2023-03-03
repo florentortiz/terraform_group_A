@@ -25,3 +25,10 @@ variable "azure_vnet_range" {
 	sensitive = true
 	default = "10.0.0.0/16"
 }
+
+
+variable "vm_name_pfx" {
+  description = "VM Names"
+  default     = "test-vm-groupe-a" #to update by Groupe#
+  type        = string
+}
