@@ -24,6 +24,18 @@ resource "azurerm_network_interface" "test-vm-groupe-a-nic-fo" {
   }
 }
 
+resource "azurerm_network_interface" "test-vm-groupe-a-nic-nicolas" {
+  name                = "${var.vm_name_pfx}-nic-nicolas"
+  location            = var.azure_resource_group_location
+  resource_group_name = var.azure_resource_group_name
+
+  ip_configuration {
+    name                          = "internal"
+    subnet_id                     = azurerm_subnet.GROUPE-A-SUBNET-TF.id
+    private_ip_address_allocation = "Dynamic"
+  }
+}
+
 #create vm
 resource "azurerm_linux_virtual_machine" "test-vm-groupe-a" {
   name                            = var.vm_name_pfx
@@ -74,6 +86,37 @@ resource "azurerm_linux_virtual_machine" "test-vm-groupe-a-fo" {
 
   os_disk {
     name                 = "my-terraform-os-disk-${var.vm_name_pfx}-fo"
+    caching              = "ReadWrite"
+    storage_account_type = "Standard_LRS"
+  }
+
+  source_image_reference {
+    publisher = "Canonical"
+    offer     = "UbuntuServer"
+    sku       = "16.04-LTS"
+    version   = "latest"
+  }
+ 
+}
+
+resource "azurerm_linux_virtual_machine" "test-vm-groupe-a-nicolas" {
+  name                            = "${var.vm_name_pfx}-nicolas"
+  resource_group_name             = var.azure_resource_group_name
+  location                        = var.azure_resource_group_location
+  size                            = "Standard_B1s" #allowed: Standard_B1ls Standard_B1ms Standard_B1s Standard_B2s Standard_D2s_v3 Standard_DS1_v2
+  computer_name                   = "myvm-nicolas"
+  admin_username                  = "adminuser"
+  admin_password                  = "Password1234!"
+  disable_password_authentication = false
+
+
+ network_interface_ids = [
+    azurerm_network_interface.test-vm-groupe-a-nic-nicolas.id,
+  ]
+ 
+
+  os_disk {
+    name                 = "my-terraform-os-disk-${var.vm_name_pfx}-nicolas"
     caching              = "ReadWrite"
     storage_account_type = "Standard_LRS"
   }
