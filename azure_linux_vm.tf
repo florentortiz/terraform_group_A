@@ -1,13 +1,13 @@
 # create an azure NIC
 
-resource "azurerm_network_interface" "test-vm-groupe-a" {
+resource "azurerm_network_interface" "test-vm-groupe-a-nic" {
   name                = "${var.vm_name_pfx}-nic"
   location            = var.azure_resource_group_location
   resource_group_name = var.azure_resource_group_name
 
   ip_configuration {
     name                          = "internal"
-    subnet_id                     = azurerm_subnet.test-vm-groupe-a-nic.id
+    subnet_id                     = azurerm_subnet.GROUPE-A-SUBNET-TF.id
     private_ip_address_allocation = "Dynamic"
   }
 }
