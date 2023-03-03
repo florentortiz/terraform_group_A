@@ -13,7 +13,7 @@ resource "azurerm_network_interface" "test-vm-groupe-a-nic" {
 }
 
 resource "azurerm_network_interface" "test-vm-groupe-a-nic-fo" {
-  name                = "${var.vm_name_pfx}-nic"
+  name                = "${var.vm_name_pfx}-nic-fo"
   location            = var.azure_resource_group_location
   resource_group_name = var.azure_resource_group_name
 
